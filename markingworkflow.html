@@ -31,6 +31,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .subtitle {
@@ -51,15 +52,8 @@
             background: #1a1a1a;
             border-radius: 15px;
             padding: 25px;
-            border: 1px solid #333;
+            border: 2px solid #333;
             position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .phase:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            border-color: #667eea;
         }
         
         .phase-number {
@@ -90,19 +84,11 @@
             border-radius: 8px;
             padding: 12px 15px;
             margin-bottom: 10px;
-            border: 1px solid #333;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-        
-        .component:hover {
-            background: #2a2a2a;
-            border-color: #667eea;
-            transform: translateX(5px);
+            border: 1px solid #444;
         }
         
         .component-title {
-            color: #fff;
+            color: #667eea;
             font-weight: 600;
             margin-bottom: 4px;
             font-size: 0.95em;
@@ -128,7 +114,7 @@
             background: #1a1a1a;
             border-radius: 15px;
             padding: 30px;
-            border: 1px solid #333;
+            border: 2px solid #333;
         }
         
         .integration-grid {
@@ -143,14 +129,7 @@
             border-radius: 10px;
             padding: 20px;
             text-align: center;
-            border: 1px solid #333;
-            transition: all 0.3s ease;
-        }
-        
-        .integration-item:hover {
-            transform: translateY(-3px);
-            border-color: #667eea;
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+            border: 1px solid #444;
         }
         
         .icon {
@@ -163,11 +142,7 @@
             align-items: center;
             justify-content: center;
             font-size: 20px;
-        }
-        
-        .workflow-diagram {
-            margin: 40px 0;
-            text-align: center;
+            color: white;
         }
         
         .highlight {
@@ -175,9 +150,21 @@
             font-weight: 600;
         }
         
+        .benefits-section {
+            margin-top: 40px;
+            text-align: center;
+            padding: 30px;
+            background: #1a1a1a;
+            border-radius: 15px;
+            border: 2px solid #333;
+        }
+        
         @media (max-width: 1200px) {
             .workflow-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .arrow {
+                display: none;
             }
         }
         
@@ -185,8 +172,8 @@
             .workflow-grid {
                 grid-template-columns: 1fr;
             }
-            .arrow {
-                display: none;
+            .integration-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -321,7 +308,7 @@
             </div>
         </div>
         
-        <div style="margin-top: 40px; text-align: center; padding: 30px; background: #1a1a1a; border-radius: 15px; border: 1px solid #333;">
+        <div class="benefits-section">
             <h3 style="color: #fff; margin-bottom: 15px;">Key Workflow Benefits</h3>
             <p style="color: #888; line-height: 1.8; max-width: 800px; margin: 0 auto;">
                 This workflow ensures <span class="highlight">brand consistency</span> across all content, 
@@ -332,34 +319,5 @@
             </p>
         </div>
     </div>
-    
-    <script>
-        // Add interactive hover effects
-        document.querySelectorAll('.component').forEach(comp => {
-            comp.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateX(5px)';
-            });
-            comp.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateX(0)';
-            });
-        });
-        
-        // Animate phases on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        });
-        
-        document.querySelectorAll('.phase').forEach(phase => {
-            phase.style.opacity = '0';
-            phase.style.transform = 'translateY(20px)';
-            phase.style.transition = 'all 0.6s ease';
-            observer.observe(phase);
-        });
-    </script>
 </body>
 </html>
